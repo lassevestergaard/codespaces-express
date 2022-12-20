@@ -14,7 +14,7 @@
         fillWedge(centerX, centerY, radius, 0, 15, "green");
         fillWedge(centerX, centerY, radius, 45, 60, "red");
 
-        drawText("vestergaardmhgkjhgk", 250);
+        drawText("vestergaard", 150);
         
 
         function fillWedge(cx,cy,radius,startM,endM,fillcolor){
@@ -30,7 +30,7 @@
         }
 
         function drawText(text, radius){
-            ctx.font = "50px serif";
+            ctx.font = "30px serif";
             ctx.fillStyle = "black";
             ctx.textAlign = "center";
   
@@ -38,6 +38,7 @@
   
             ctx.translate(300, 300);
             ctx.rotate(-1 * angle / 2);
+            ctx.rotate(-1 * Math.PI/2);
   
             for (let i = 0; i < text.length; i++) {
                 ctx.rotate(angle / text.length);
