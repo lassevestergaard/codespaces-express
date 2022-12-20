@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<head>
+
+</head>
+<body>
+    <canvas id="myCanvas" width="500" height="500"></canvas>
+    <script>
+        var canvas = document.getElementById('myCanvas');
+        var ctx = canvas.getContext('2d');
+        var centerX = canvas.width / 2;
+        var centerY = canvas.height / 2;
+        var radius = 70;
+
+        fillWedge(centerX, centerY, radius, 0, 15, "green");
+        fillWedge(centerX, centerY, radius, 45, 60, "red");
+
+        drawText("vestergaardmhgkjhgk", 250);
+        
+
+        function fillWedge(cx,cy,radius,startM,endM,fillcolor){
+            ctx.beginPath();
+            ctx.arc(cx,cy,radius,minToRad(startM),minToRad(endM));
+            ctx.lineWidth = 70;
+            ctx.strokeStyle = fillcolor;
+            ctx.stroke();
+        }
+
+        function minToRad(min){
+            return ((min * 6)-90) * (Math.PI/180);
+        }
+
+        function drawText(text, radius){
+            ctx.font = "50px serif";
+            ctx.fillStyle = "black";
+            ctx.textAlign = "center";
+  
+            let angle = Math.PI * 0.6;
+  
+            ctx.translate(300, 300);
+            ctx.rotate(-1 * angle / 2);
+  
+            for (let i = 0; i < text.length; i++) {
+                ctx.rotate(angle / text.length);
+                ctx.save();
+                ctx.translate(0, -1 * radius);
+                ctx.fillText(text[i], 0, 0);
+                ctx.restore();
+            }
+        }
+    </script>
+  </body>
+</body>
+</html>
